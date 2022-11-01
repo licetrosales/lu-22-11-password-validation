@@ -2,6 +2,11 @@ package PasswordValidator;
 
 public class PasswordValidator {
 
+    public static boolean isValid(String password) {
+
+        return  containsDigit(password)&& isLongerThan7(password);
+    }
+
     public static boolean isLongerThan7(String password) {
         return password.length() > 7;
     }

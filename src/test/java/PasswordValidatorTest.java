@@ -21,4 +21,18 @@ public class PasswordValidatorTest {
     void passwordContainsNoDigit(){
         Assertions.assertEquals(false, PasswordValidator.containsDigit("testABC"));
     }
+    @Test
+    void passwordContainsNoDigitButIsLongEnough(){
+        Assertions.assertEquals(false, PasswordValidator.isValid("IchBinLangGenug"));
+    }
+     @Test
+    void passwordContainsDigitButIsNotLongEnough(){
+        Assertions.assertEquals(false, PasswordValidator.isValid("IchBin1"));
+    }
+
+    @Test
+    void passwordisValid(){
+        Assertions.assertEquals(true, PasswordValidator.isValid("Test1234567"));
+    }
+
 }
