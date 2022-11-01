@@ -14,4 +14,11 @@ public class PasswordValidatorTest {
         Assertions.assertEquals(true, PasswordValidator.isLongerThan7("12345678"));
 
     }
+    @Test
+    void passwordContainsDigit(){
+        Assertions.assertEquals(true, PasswordValidator.containsDigit("test123"));
+    } @Test
+    void passwordContainsNoDigit(){
+        Assertions.assertEquals(false, PasswordValidator.containsDigit("testABC"));
+    }
 }
