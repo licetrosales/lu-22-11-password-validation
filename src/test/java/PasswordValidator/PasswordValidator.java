@@ -4,7 +4,11 @@ public class PasswordValidator {
 
     public static boolean isValid(String password) {
 
-        return  containsDigit(password)&& isLongerThan7(password);
+        return  containsDigit(password)
+                && isLongerThan7(password)
+                && containsLowerCase(password)
+                && containsUpperCase(password)
+                && !isInSetOfProhibitedTests(password);
     }
 
     public static boolean isLongerThan7(String password) {
@@ -15,6 +19,27 @@ public class PasswordValidator {
 
         for(char letter:  password.toCharArray()){
             if(Character.isDigit(letter)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean containsLowerCase(String password) {
+        return !password.equals(password.toUpperCase());
+    }
+
+    public static boolean containsUpperCase(String password) {
+        return !password.equals(password.toLowerCase());
+    }
+
+    public static boolean isInSetOfProhibitedTests(String password) {
+        String[] prohibitedTexts = {
+                "Password1",
+                "Geheim123",
+        };
+        for(String prohibitedText : prohibitedTexts){
+            if(password.equals(prohibitedText)){
                 return true;
             }
         }
